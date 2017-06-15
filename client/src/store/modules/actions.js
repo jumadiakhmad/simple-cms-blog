@@ -50,5 +50,25 @@ export const Actions = {
       console.log(error);
       console.log('error newArticle, masuk ke catch');
     })
-  }
+  },
+  editArticle: ({commit}, payload) => {
+    axios.post(`http://localhost:3000/editarticle/${payload.id}`, payload).then(response => {
+      console.log('Action edit article');
+      console.log(response.data);
+      commit('newArticle', response.data)
+    }).catch(error => {
+      console.log(error);
+      console.log('error editArticle, masuk ke catch');
+    })
+  },
+  deleteArticle: ({commit}, payload) => {
+    axios.post(`http://localhost:3000/deletearticle/${payload}`).then(response => {
+      console.log('Action delete article');
+      console.log(response.data);
+      commit('deleteArticle', response.data)
+    }).catch(error => {
+      console.log(error);
+      console.log('error deleteArticle, masuk ke catch');
+    })
+  },
 }

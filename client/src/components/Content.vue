@@ -1,6 +1,7 @@
 <template lang="html">
   <div>
     <span>ini content</span>
+    <span>Tesssss</span>
   </div>
 </template>
 

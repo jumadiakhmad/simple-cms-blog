@@ -12,6 +12,10 @@ methods.getAllArticles = (req, res) => {
   })
 }
 
+methods.getArticleByAuthor = (req, res) => {
+
+}
+
 methods.getDetailArticles = (req, res) => {
   Article.findById(req.params.id)
   .populate('author')

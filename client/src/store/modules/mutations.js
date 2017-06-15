@@ -15,5 +15,18 @@ export const Mutations = {
   },
   newArticle: (state, payload) => {
     state.dataArticles.push(payload)
+  },
+  editArticle: (state, payload) => {
+    // state.dataArticles = payload
+    var index = state.dataArticles.findIndex( a => a._id == payload._id )
+
+    if(index != 1) {
+     state.dataArticles.splice(index, 1, payload)
+    }
+  },
+  deleteArticle: (state, payload) => {
+    // state.dataArticles = payload
+    var newArticle = state.dataArticles.filter( a => a._id != payload._id)
+    state.dataArticles = newArticle
   }
 }
