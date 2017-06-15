@@ -34,7 +34,8 @@
                   <div class="grid-content">
                     <el-card :body-style="{ padding: '5px' }" style="height:auto;">
                       <div slot="header" class="clearfix">
-                        <span>{{article.title}}</span>
+                        <!-- <span>{{article.title}}</span> -->
+                        <router-link :to="'detailarticle/'+article._id"><span>{{article.title}}</span></router-link>
                         <el-button-group style="float:right;" v-show='statusLogin' v-if="userActive == article.author._id">
                           <el-button type="warning" size="small" icon="edit" v-on:click="viewEditArticle(article)"></el-button>
                           <el-button type="danger" size="small" icon="delete" v-on:click="deleteArticle(article)"></el-button>
@@ -55,7 +56,8 @@
                   <div class="grid-content">
                     <el-card :body-style="{ padding: '5px' }" style="height:auto;">
                       <div slot="header" class="clearfix">
-                        <span>{{article.title}}</span>
+                        <!-- <span>{{article.title}}</span> -->
+                        <router-link :to="'detailarticle/'+article._id"><span>{{article.title}}</span></router-link>
                         <el-button-group style="float:right;" v-show='statusLogin' v-if="userActive == article.author._id">
                           <el-button type="warning" size="small" icon="edit" v-on:click="viewEditArticle(article)"></el-button>
                           <el-button type="danger" size="small" icon="delete" v-on:click="deleteArticle(article)"></el-button>
@@ -76,7 +78,8 @@
                   <div class="grid-content">
                     <el-card :body-style="{ padding: '5px' }" style="height:auto;">
                       <div slot="header" class="clearfix">
-                        <span>{{article.title}}</span>
+                        <!-- <span>{{article.title}}</span> -->
+                        <router-link :to="'detailarticle/'+article._id"><span>{{article.title}}</span></router-link>
                         <el-button-group style="float:right;" v-show='statusLogin' v-if="userActive == article.author._id">
                           <el-button type="warning" size="small" icon="edit" v-on:click="viewEditArticle(article)"></el-button>
                           <el-button type="danger" size="small" icon="delete" v-on:click="deleteArticle(article)"></el-button>

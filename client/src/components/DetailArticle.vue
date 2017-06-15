@@ -1,7 +1,7 @@
 <template lang="html">
   <div>
     <!-- {{detailArticle}} -->
-    <el-row style="margin-top:20px;">
+    <el-row style="margin-top:20px;" type="flex" class="row-bg" justify="center">
       <el-col :span="15">
         <div class="grid-content">
           <el-card :body-style="{ padding: '5px' }" style="height:auto;">
