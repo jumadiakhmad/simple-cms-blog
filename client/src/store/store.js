@@ -11,7 +11,8 @@ export const store = new Vuex.Store({
     user: [],
     signIn: [],
     dataArticles: [],
-    dataArticleByAuthor: []
+    dataArticleByAuthor: [],
+    detailArticle: []
   },
   getters: getters.Getters,
   mutations: mutations.Mutations,

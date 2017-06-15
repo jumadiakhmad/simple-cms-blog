@@ -25,6 +25,10 @@
                   <el-card :body-style="{ padding: '5px' }" style="height:auto;">
                     <div slot="header" class="clearfix">
                       <span>{{article.title}}</span>
+                      <!-- <el-button-group style="float:right;">
+                        <el-button type="warning" size="small" icon="edit" v-on:click="viewEditArticle(article)"></el-button>
+                        <el-button type="danger" size="small" icon="delete" v-on:click="deleteArticle(article)"></el-button>
+                      </el-button-group> -->
                     </div>
                     <div class="text item">
                       <span class="mini-counts">Author: {{article.author.name}}</span>

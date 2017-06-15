@@ -104,12 +104,8 @@ function statusChangeCallback(response) {
         email: apiResponse.email,
         name: apiResponse.name
       }
-      console.log('ini data body');
-      console.log(body);
       axios.post(url, body)
         .then((res) => {
-          console.log('Tessss');
-          console.log(res);
           window.localStorage.setItem('id', res.data._id);
           window.location = "/"
         })

@@ -12,14 +12,14 @@
                   <div class="grid-content">
                     <el-card :body-style="{ padding: '5px' }" style="height:auto;">
                       <div slot="header" class="clearfix">
-                        <span>{{article.title}}</span>
+                        <router-link :to="'detailarticle/'+article._id"><span>{{article.title}}</span></router-link>
                         <el-button-group style="float:right;" v-show='statusLogin' v-if="userActive == article.author._id">
                           <el-button type="warning" size="small" icon="edit" v-on:click="viewEditArticle(article)"></el-button>
                           <el-button type="danger" size="small" icon="delete" v-on:click="deleteArticle(article)"></el-button>
                         </el-button-group>
                       </div>
                       <div class="text item">
-                        <span class="mini-counts">Author: {{article.author.name}}</span>
+                        <span class="mini-counts"><b>Author: {{article.author.name}}</b></span>
                         <hr style="border-color:white;">
                         <span class="mini-counts">{{article.content}}</span><br>
                         <span class="teks-bawah">Kategori: {{article.category}}</span>
@@ -41,7 +41,7 @@
                         </el-button-group>
                       </div>
                       <div class="text item">
-                        <span class="mini-counts">Author: {{article.author.name}}</span>
+                        <span class="mini-counts"><b>Author: {{article.author.name}}</b></span>
                         <hr style="border-color:white;">
                         <span class="mini-counts">{{article.content}}</span>
                       </div>
@@ -62,7 +62,7 @@
                         </el-button-group>
                       </div>
                       <div class="text item">
-                        <span class="mini-counts">Author: {{article.author.name}}</span>
+                        <span class="mini-counts"><b>Author: {{article.author.name}}</b></span>
                         <hr style="border-color:white;">
                         <span class="mini-counts">{{article.content}}</span>
                       </div>
@@ -83,7 +83,7 @@
                         </el-button-group>
                       </div>
                       <div class="text item">
-                        <span class="mini-counts">Author: {{article.author.name}}</span>
+                        <span class="mini-counts"><b>Author: {{article.author.name}}</b></span>
                         <hr style="border-color:white;">
                         <span class="mini-counts">{{article.content}}</span>
                       </div>
@@ -104,7 +104,6 @@
               <el-tag style="margin:0px 5px 5px 0px;" type="gray">Novel</el-tag>
               <el-tag style="margin:0px 5px 5px 0px;" type="gray">Dongeng</el-tag>
               <el-tag style="margin:0px 5px 5px 0px;" type="gray">Horor</el-tag>
-
             </div>
           </div>
         </el-col>
@@ -275,7 +274,6 @@ export default {
           console.log(payload);
           console.log(payload.category);
           this.$store.dispatch('editArticle', payload)
-          this.
           this.$refs[formName].resetFields();
           this.categoryTemp = []
           this.dialogFormEditArticle = false
@@ -304,6 +302,10 @@ export default {
       }
       this.inputVisible = false;
       this.inputValue = '';
+    },
+    detailArticle(data) {
+      this.$store.dispatch('detailArticle', data._id)
+      this.$router.push(`detailarticle/${data._id}`)
     }
   },
   computed: {

@@ -7,5 +7,8 @@ export const Getters = {
   },
   dataArticleByAuthor: (state) => {
     return state.dataArticleByAuthor
+  },
+  detailArticle: (state) => {
+    return state.detailArticle
   }
 }

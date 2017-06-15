@@ -14,6 +14,9 @@ export const Mutations = {
   dataArticles: (state, payload) => {
     state.dataArticles = payload
   },
+  detailArticle: (state, payload) => {
+    state.detailArticle = payload
+  },
   dataArticleByAuthor: (state, payload) => {
     state.dataArticleByAuthor = payload
   },

@@ -38,7 +38,19 @@ export const Actions = {
       commit('dataArticles', response.data)
     }).catch(error => {
       console.log(error);
-      console.log('error signup, masuk ke catch');
+      console.log('error dataArticles, masuk ke catch');
+    })
+  },
+  detailArticle: ({commit}, payload) => {
+    axios.get(`http://localhost:3000/detailarticle/${payload}`)
+    .then(response => {
+      console.log('Action detailArticle');
+      console.log(response.data);
+      commit('detailArticle', response.data)
+    })
+    .catch(error => {
+      console.log(error);
+      console.log('error detailArticle, masuk ke catch');
     })
   },
   dataArticleByAuthor: ({commit}, payload) => {
