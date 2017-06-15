@@ -28,10 +28,20 @@ methods.signIn = (req, res) => {
   User.findOne({ username: req.body.username}, (error, response) => {
     if (error) res.json({msg: `Something error signup: ${error}`, success: false})
     else {
-      if (bCrypt.compareSync(response.password, pwd)) {
+      if (bCrypt.compareSync(pwd, response.password)) {
         let token = jwt.sign({
-          id:
-        })
+          id: response._id,
+          name: response.name,
+          username: response.username,
+          email:response.email
+        }, process.env.SECRET_KEY, {expiresIn: '1d'})
+        res.json({
+          msg: 'Success signin',
+          id: response._id,
+          username: response.username,
+          token})
+      } else {
+        res.json({msg: `Password is not match`})
       }
     }
   })
