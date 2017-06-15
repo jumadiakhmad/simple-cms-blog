@@ -11,12 +11,13 @@ require('dotenv').config()
 
 app.set('port', process.env.PORT || 3000)
 
+mongoose.connect('mongodb://localhost/hacktivpress-ucilubis')
+
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 app.use(logger('dev'))
 
 app.use('/', index)
-
 
 app.listen(app.get('port'), () => {
   console.log('Listening on port: '+app.get('port'));
