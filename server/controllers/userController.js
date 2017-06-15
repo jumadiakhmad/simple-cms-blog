@@ -47,4 +47,14 @@ methods.signIn = (req, res) => {
   })
 }
 
+methods.getAllUser = (req, res) => {
+  User.find({}, (error, response) => {
+    if (error) res.json({msg: `Something error signup: ${error}`, success: false})
+    else {
+      res.send(response)
+    }
+  })
+}
+
+
 module.exports = methods
