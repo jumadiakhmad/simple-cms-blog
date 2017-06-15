@@ -4,5 +4,8 @@ export const Getters = {
   },
   dataArticles: (state) => {
     return state.dataArticles
+  },
+  dataArticleByAuthor: (state) => {
+    return state.dataArticleByAuthor
   }
 }

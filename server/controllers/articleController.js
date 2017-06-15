@@ -13,7 +13,17 @@ methods.getAllArticles = (req, res) => {
 }
 
 methods.getArticleByAuthor = (req, res) => {
-
+  Article.find({})
+  .populate('author')
+  .exec((error, response) => {
+    let pushData = []
+    response.forEach(article => {
+      if (article.author._id == req.params.id) {
+        pushData.push(article)
+      }
+    })
+    res.send(pushData)
+  })
 }
 
 methods.getDetailArticles = (req, res) => {
@@ -38,7 +48,7 @@ methods.createArticle = (req, res) => {
   newArticle.save((error, response) => {
     if (error) res.json({msg: `Something error newArticle: ${error}`, success: false})
     else {
-      Article.findById(req.params.id)
+      Article.findById(response._id)
       .populate('author')
       .exec((error, response) => {
         if (error) res.json({msg: `Something error getDetailArticles: ${error}`, success: false})
@@ -64,10 +74,17 @@ methods.editArticle = (req, res) => {
       }, {
         new: true
       })
-      .exec((error, response) => {
+      .exec((error, result) => {
         if (error) res.json({msg: `Something error getDetailArticles: ${error}`, success: false})
         else {
-          res.send(response)
+          Article.findById(result._id)
+          .populate('author')
+          .exec((error, hasil) => {
+            if (error) res.json({msg: `Something error getDetailArticles: ${error}`, success: false})
+            else {
+              res.send(hasil)
+            }
+          })
         }
       })
     }

@@ -10,8 +10,9 @@
 
       <el-submenu index="2" style="float:right;" v-show="statusLogin">
         <template slot="title"><b>Welcome, {{userActive}}</b></template>
-        <el-menu-item index="2-2">Profile</el-menu-item>
-        <el-menu-item index="2-3" @click="signOut">SignOut</el-menu-item>
+        <el-menu-item index="2-2" @click="toProfile">Profile</el-menu-item>
+        <el-menu-item index="2-3" @click="toHome">Home</el-menu-item>
+        <el-menu-item index="2-4" @click="signOut">SignOut</el-menu-item>
       </el-submenu>
     </el-menu>
 
@@ -239,6 +240,12 @@ export default {
     },
     resetForm(formName) {
       this.$refs[formName].resetFields();
+    },
+    toProfile() {
+      this.$router.push('/profile')
+    },
+    toHome() {
+      this.$router.push('/')
     }
   },
   computed: {

@@ -8,6 +8,7 @@ router.post('/signin', userController.signIn)
 router.get('/alluser', userController.getAllUser)
 
 router.get('/allarticles', articleController.getAllArticles)
+router.get('/articlebyauthor/:id', articleController.getArticleByAuthor)
 router.get('/detailarticle/:id', articleController.getDetailArticles)
 router.post('/createarticle', articleController.createArticle)
 router.put('/editarticle/:id', articleController.editArticle)

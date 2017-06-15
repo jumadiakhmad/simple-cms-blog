@@ -41,6 +41,16 @@ export const Actions = {
       console.log('error signup, masuk ke catch');
     })
   },
+  dataArticleByAuthor: ({commit}, payload) => {
+    axios.get(`http://localhost:3000/articlebyauthor/${payload}`).then(response => {
+      console.log('Action get all articles by author');
+      console.log(response.data);
+      commit('dataArticleByAuthor', response.data)
+    }).catch(error => {
+      console.log(error);
+      console.log('error dataArticleByAuthor, masuk ke catch');
+    })
+  },
   newArticle: ({commit}, payload) => {
     axios.post('http://localhost:3000/createarticle', payload).then(response => {
       console.log('Action create article');
@@ -52,17 +62,24 @@ export const Actions = {
     })
   },
   editArticle: ({commit}, payload) => {
-    axios.post(`http://localhost:3000/editarticle/${payload.id}`, payload).then(response => {
+    console.log('**************');
+    console.log(payload);
+    axios.put(`http://localhost:3000/editarticle/${payload.id}`, {
+      title: payload.title,
+      content: payload.content,
+      category: payload.category,
+      author: payload.author
+    }).then(response => {
       console.log('Action edit article');
       console.log(response.data);
-      commit('newArticle', response.data)
+      commit('editArticle', response.data)
     }).catch(error => {
       console.log(error);
       console.log('error editArticle, masuk ke catch');
     })
   },
   deleteArticle: ({commit}, payload) => {
-    axios.post(`http://localhost:3000/deletearticle/${payload}`).then(response => {
+    axios.delete(`http://localhost:3000/deletearticle/${payload}`).then(response => {
       console.log('Action delete article');
       console.log(response.data);
       commit('deleteArticle', response.data)
@@ -70,5 +87,5 @@ export const Actions = {
       console.log(error);
       console.log('error deleteArticle, masuk ke catch');
     })
-  },
+  }
 }

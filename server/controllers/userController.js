@@ -39,6 +39,7 @@ methods.signIn = (req, res) => {
           msg: 'Success signin',
           id: response._id,
           username: response.username,
+          email: response.email,
           token})
       } else {
         res.json({msg: `Password is not match`})
